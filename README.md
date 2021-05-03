@@ -7,7 +7,7 @@ Ihnen liegen eine funktionierende Angriffswelt, verschiedene Menüs und ein spie
 
 In den Räumlichkeiten der Schick&Kannix gibt es einiges, was Ihnen bei der Entwicklung helfen kann. Zum einen finden Sie hier den Quellcode des Spiels.
 
-Auch wurde ein Scrumboard zurückgelassen, das noch die aktuellen ToDos bei dem Projekt zeigt.
+Auch wurde ein Scrumboard zurückgelassen, das noch die aktuellen ToDos bei dem Projekt zeigt: https://trello.com/b/LorKrW1Z/ls03-alien-defence .
 Außerdem gibt es eine kleine Fachbibliothek mit Literatur, die für die Fertigstellung der Software wichtig ist, und die Sie in jedem Abschnitt in Moodle finden.
 
 Also auf gehts ans Werk!
