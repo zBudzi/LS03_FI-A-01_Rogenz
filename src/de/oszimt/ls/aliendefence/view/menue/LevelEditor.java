@@ -20,6 +20,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
+import de.oszimt.ls.aliendefence.controller.AlienDefenceController;
 import de.oszimt.ls.aliendefence.controller.LevelController;
 import de.oszimt.ls.aliendefence.controller.TargetController;
 import de.oszimt.ls.aliendefence.model.Level;
@@ -50,11 +51,11 @@ public class LevelEditor extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public LevelEditor(LeveldesignWindow leveldesignWindow, LevelController lvlControl, TargetController targetControl,
+	public LevelEditor(LeveldesignWindow leveldesignWindow, AlienDefenceController controller,
 			Level lvl) {
 		this.leveldesignWindow = leveldesignWindow;
-		this.lvlControl = lvlControl;
-		this.targetControl = targetControl;
+		this.lvlControl = controller.getLevelController();
+		this.targetControl = controller.getTargetController();
 		this.lvl = lvl;
 
 		setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -1,5 +1,6 @@
 package de.oszimt.ls.aliendefence.view.menue;
 
+import de.oszimt.ls.aliendefence.controller.AlienDefenceController;
 import de.oszimt.ls.aliendefence.controller.LevelController;
 import de.oszimt.ls.aliendefence.model.Level;
 
@@ -23,11 +24,11 @@ public class LevelChoice {
 
     /**
      * Create the panel
-     * @param lvlControl
+     * @param controller
      * @param leveldesignWindow
      */
-    public LevelChoice(LevelController lvlControl, LeveldesignWindow leveldesignWindow) {
-        this.lvlControl = lvlControl;
+    public LevelChoice(AlienDefenceController controller, LeveldesignWindow leveldesignWindow) {
+        this.lvlControl = controller.getLevelController();
         this.leveldesignWindow = leveldesignWindow;
 
         btnNewLevel.addActionListener(new ActionListener() {

@@ -89,7 +89,7 @@ public class MainMenu {
         levelEditorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LeveldesignWindow(alienDefenceController.getLevelController(), alienDefenceController.getTargetController());
+                new LeveldesignWindow(alienDefenceController);
             }
         });
 

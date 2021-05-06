@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import de.oszimt.ls.aliendefence.controller.AlienDefenceController;
 import de.oszimt.ls.aliendefence.controller.LevelController;
-import de.oszimt.ls.aliendefence.controller.TargetController;
 import de.oszimt.ls.aliendefence.model.Level;
 
 @SuppressWarnings("serial")
@@ -15,7 +15,7 @@ public class LeveldesignWindow extends JFrame {
 
 	private LevelController lvlControl;
 	private JPanel contentPane;
-	private LevelChoice cardChooseLevel;
+	public LevelChoice levelChoice;
 	private LevelEditor cardLevelEditor;
 
 	private CardLayout cards;
@@ -23,8 +23,8 @@ public class LeveldesignWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LeveldesignWindow(LevelController lvlControl, TargetController targetControl) {
-		this.lvlControl = lvlControl;
+	public LeveldesignWindow(AlienDefenceController controller) {
+		this.lvlControl = controller.getLevelController();
 
 		setTitle("Leveldesigner");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,10 +35,10 @@ public class LeveldesignWindow extends JFrame {
 		this.cards = new CardLayout();
 		contentPane.setLayout(cards);
 
-		this.cardChooseLevel = new LevelChoice(lvlControl, this);
-		contentPane.add(cardChooseLevel.getPanel(), "levelChooser");
+		levelChoice = new LevelChoice(controller, this);
+		contentPane.add(levelChoice.getPanel(), "levelChooser");
 
-		this.cardLevelEditor = new LevelEditor(this, lvlControl, targetControl, Level.getDefaultLevel());
+		this.cardLevelEditor = new LevelEditor(this, controller, Level.getDefaultLevel());
 		contentPane.add(cardLevelEditor, "levelEditor");
 
 		this.showLevelChooser();
@@ -69,7 +69,7 @@ public class LeveldesignWindow extends JFrame {
 	 */
 	public void showLevelChooser() {
 		this.cards.show(contentPane, "levelChooser");
-		this.cardChooseLevel.updateTableData();
+		levelChoice.updateTableData();
 	}
 
 }
