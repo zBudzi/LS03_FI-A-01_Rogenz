@@ -1,8 +1,11 @@
 package de.oszimt.ls.aliendefence.view.menue;
 
 import de.oszimt.ls.aliendefence.controller.AlienDefenceController;
+import de.oszimt.ls.aliendefence.controller.GameController;
 import de.oszimt.ls.aliendefence.controller.LevelController;
 import de.oszimt.ls.aliendefence.model.Level;
+import de.oszimt.ls.aliendefence.model.User;
+import de.oszimt.ls.aliendefence.view.game.GameGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +20,7 @@ public class LevelChoice {
     private JButton btnUpdateLevel;
     private JTable tblLevels;
     private JButton btnDeleteLevel;
+    private JButton btnSpielen;
 
     private final LevelController lvlControl;
     private final LeveldesignWindow leveldesignWindow;
@@ -27,9 +31,15 @@ public class LevelChoice {
      * @param controller
      * @param leveldesignWindow
      */
-    public LevelChoice(AlienDefenceController controller, LeveldesignWindow leveldesignWindow) {
+    public LevelChoice(AlienDefenceController controller, LeveldesignWindow leveldesignWindow, User user) {
         this.lvlControl = controller.getLevelController();
         this.leveldesignWindow = leveldesignWindow;
+
+        btnSpielen.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                btnSpielen_Clicked(controller, user);
+            }
+        });
 
         btnNewLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -88,4 +98,13 @@ public class LevelChoice {
     public JPanel getPanel() {
         return panel;
     }
+
+    public void btnSpielen_Clicked(AlienDefenceController alienDefenceController, User user) {
+        int level_id = Integer
+                .parseInt((String) this.tblLevels.getModel().getValueAt(this.tblLevels.getSelectedRow(), 0));
+        Level level = alienDefenceController.getLevelController().readLevel(level_id);
+        GameController gameController = alienDefenceController.startGame(level, user);
+        new GameGUI(gameController).start();
+    }
 }
+
