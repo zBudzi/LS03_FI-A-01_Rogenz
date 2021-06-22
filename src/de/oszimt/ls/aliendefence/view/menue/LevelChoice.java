@@ -100,11 +100,29 @@ public class LevelChoice {
     }
 
     public void btnSpielen_Clicked(AlienDefenceController alienDefenceController, User user) {
+        //Level_id des selektierten Elements auslesen
         int level_id = Integer
                 .parseInt((String) this.tblLevels.getModel().getValueAt(this.tblLevels.getSelectedRow(), 0));
+
+        //gewähltes Level aus der Persistenz holen
         Level level = alienDefenceController.getLevelController().readLevel(level_id);
-        GameController gameController = alienDefenceController.startGame(level, user);
-        new GameGUI(gameController).start();
+
+        //Gameprozess starten
+        Thread t = new Thread("GameThread") {
+
+            @Override
+            public void run() {
+
+                // Spielaufruf durchführen
+                GameController gameController = alienDefenceController.startGame(level, user);
+                new GameGUI(gameController).start();
+
+            }
+        };
+        //Prozess starten
+        t.start();
+        //Levelauswahlfenster schließen
+        this.leveldesignWindow.dispose();
     }
 }
 
