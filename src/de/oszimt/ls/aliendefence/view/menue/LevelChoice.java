@@ -31,7 +31,7 @@ public class LevelChoice {
      * @param controller
      * @param leveldesignWindow
      */
-    public LevelChoice(AlienDefenceController controller, LeveldesignWindow leveldesignWindow, User user) {
+    public LevelChoice(AlienDefenceController controller, LeveldesignWindow leveldesignWindow, User user, String source) {
         this.lvlControl = controller.getLevelController();
         this.leveldesignWindow = leveldesignWindow;
 
@@ -61,6 +61,14 @@ public class LevelChoice {
 
         tblLevels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         this.updateTableData();
+
+        if(source.equals("Testen")) {
+            btnNewLevel.setVisible(false);
+            btnUpdateLevel.setVisible(false);
+            btnDeleteLevel.setVisible(false);
+        } else if(source.equals("Leveleditor")) {
+            btnSpielen.setVisible(false);
+        }
     }
 
     private String[][] getLevelsAsTableModel() {

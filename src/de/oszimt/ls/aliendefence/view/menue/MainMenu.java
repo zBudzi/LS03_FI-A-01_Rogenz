@@ -71,7 +71,7 @@ public class MainMenu {
                     public void run() {
 
                         //leveleditor
-                        new LeveldesignWindow(alienDefenceController, user);
+                        new LeveldesignWindow(alienDefenceController, user, "Testen");
                         // GameController gameController = alienDefenceController.startGame(arrLevel.get(level.getSelectedIndex()), user);
                         // new GameGUI(gameController).start();
                     }
@@ -92,7 +92,7 @@ public class MainMenu {
         levelEditorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LeveldesignWindow(alienDefenceController, null);
+                new LeveldesignWindow(alienDefenceController, null, "Leveleditor");
             }
         });
 
