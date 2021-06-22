@@ -69,6 +69,8 @@ public class MainMenu {
 
                     @Override
                     public void run() {
+
+                        //Leveleditor
                         new LeveldesignWindow(alienDefenceController);
                         // GameController gameController = alienDefenceController.startGame(arrLevel.get(level.getSelectedIndex()), user);
                         // new GameGUI(gameController).start();
